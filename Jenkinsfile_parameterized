@@ -1,10 +1,15 @@
 node {
 
+    // ===== GLOBAL VARIABLES (VERY IMPORTANT) =====
+    def branchName
+    def mvnGoals
+    def javaTool
+
     stage('Init') {
 
-        def branchName = params.BRANCH ?: 'master'
-        def mvnGoals   = params.MVN_GOALS ?: 'clean package'
-        def javaTool   = params.JDK_VER ?: 'JDK8'
+        branchName = params.BRANCH ?: 'master'
+        mvnGoals   = params.MVN_GOALS ?: 'clean package'
+        javaTool   = params.JDK_VER ?: 'JDK8'
 
         echo "Selected Branch: ${branchName}"
         echo "Maven Goals: ${mvnGoals}"
